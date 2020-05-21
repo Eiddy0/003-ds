@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    <link href="__ADMIN__/style/style.css" rel="stylesheet">
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/top" /}
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="public/left" /}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('index/index')}">信息审核</a>
+                    </li>
+                    <li class="active">团队审核</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+               
+                <div class="row">
+
+               
+     
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll"> 
+                                  <h5 style="text-align: center;font-size: 30px;font-family:Microsoft YaHei;"><b>{$data.name}团队</b></h5><br/>
+                                  <h5 style="text-align: center;font-size: 20px;font-family:Microsoft YaHei;"><b>材料提交</b></h5>
+                                  <h5 style="text-align: right;margin-right: 44px;margin-bottom: 20px;font-family:Microsoft YaHei;"><b>{$data.school}</b></h5>
+                                  <h5 style="text-align: right;margin-right: 44px;margin-bottom: 20px;font-family:Microsoft YaHei;"><b>{$deadline.value}</b></h5>
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="text-center">ID</th>     
+                                            <th class="text-center">文件名</th>
+                                            <th class="text-center">修改时间</th>
+                                             <th class="text-center">状态</th>
+                                            <th class="text-center">文件</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody> 
+                                        {volist name="data.material" id="data2"}
+                                        <tr>
+                                            <td align="center" style="vertical-align:middle">{$data2.material_id}</td>
+                                            <td align="center" style="vertical-align:middle">{$data2.title}</td>
+                                            <td align="center" style="vertical-align:middle">{$data2.time}</td>
+                                             <td align="center" style="vertical-align:middle">{$data2.status}</td>
+                                            <td align="center" style="vertical-align:middle">
+                                                <a href="http://cxds.utbeta.com/public/{$data2.route}"
+                                                   class="btn btn-primary btn-sm shiny">
+                                                    <i class="menu-icon fa fa-file-text"></i> 下载
+                                                </a>
+
+                                                <a href="{:url('delmaterial',array('material_id'=>$data2.material_id,'team_id'=>$data2.team_id))}"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i> 删除
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="flip-scroll"> 
+                                  <h5 style="text-align: center;font-size: 20px;font-family:Microsoft YaHei;"><b>实验记录</b></h5><br/>
+                                  
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr>
+                                            <th class="text-center xa-text-center">ID</th>     
+                                            <th class="text-center">文件名</th>
+                                            <th class="text-center">修改时间</th>
+                                            <th class="text-center">文件</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody> 
+                                        {volist name="data.record" id="data3"}
+                                        <tr>
+                                            <td align="center" style="vertical-align:middle">{$data3.record_id}</td>
+                                            <td align="center" style="vertical-align:middle">{$data3.title}</td>
+                                            <td align="center" style="vertical-align:middle">{$data3.time}</td>
+                                            <td align="center" style="vertical-align:middle">
+                                                <a href="{:url('approval/upload',array('record_id'=>$data3.record_id))}"
+                                                   class="btn btn-primary btn-sm shiny">
+                                                    <i class="menu-icon fa fa-file-text"></i> 下载
+                                                </a>
+
+                                                <!-- <a href="{:url('approval/upload',array('record_id'=>$data3.record_id))}" -->
+
+                                                 <a href="{:url('delrecord',array('record_id'=>$data3.record_id,'team_id'=>$data3.team_id))}"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i> 删除
+                                                </a>
+
+
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                              
+                                <div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__ADMIN__/style/beyond.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>浙江省大学生环境生态科技创新大赛</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Bootstrap 3 template for corporate business" />
+	<!-- css -->
+	<link href="__WEBSITE__/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="__WEBSITE__/plugins/flexslider/flexslider.css" rel="stylesheet" media="screen" />
+	<link href="__WEBSITE__/css/cubeportfolio.min.css" rel="stylesheet" />
+	<link href="__WEBSITE__/css/style.css" rel="stylesheet" />
+    <link href="__WEBSITE__/css/mycss.css" rel="stylesheet" />
+
+	<!-- Theme skin -->
+	<link id="t-colors" href="__WEBSITE__/skins/default.css" rel="stylesheet" />
+
+	<!-- boxed bg -->
+	<link id="bodybg" href="__WEBSITE__/bodybg/bg1.css" rel="stylesheet" type="text/css" />
+
+	
+
+</head>
+
+<body>
+{include file="public/right" /}
+	<div id="wrapper">
+		<!-- start header -->
+	{include file="public/head" /}
+		<!-- end header -->
+		
+		<section id="content">
+			<div class="container">
+				<div class="row">
+
+					{include file="public/left" /}
+
+					<div class="col-lg-8 post">
+						{volist name="search" id="new"}
+						<article>
+							<div class="post-image">
+								<div class="post-heading">
+									<h3><a href="{:url('article/index',array('artid'=>$new['id']))}">{$new.title}</a></h3>
+								</div>
+								<!-- <img src="__WEBSITE__/img/dummies/blog/img1.jpg" alt="" class="img-responsive" /> -->
+							</div>
+							<p>
+								{$new.desc}
+							</p>
+							<div class="bottom-article">
+								<ul class="meta-post">
+									<li><i class="fa fa-calendar"></i>{$new.time}</li>
+								</ul>
+								<a href="{:url('article/index',array('artid'=>$new['id']))}" class="readmore pull-right">继续阅读<i class="fa fa-angle-right"></i></a>
+							</div>
+						</article>
+						{/volist}
+						<div id="pagination">
+							{$searchlist}
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</section>
+		{include file="public/foot" /}
+	</div>
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="__WEBSITE__/js/jquery.min.js"></script>
+	<script src="__WEBSITE__/js/modernizr.custom.js"></script>
+	<script src="__WEBSITE__/js/jquery.easing.1.3.js"></script>
+	<script src="__WEBSITE__/js/bootstrap.min.js"></script>
+	<script src="__WEBSITE__/plugins/flexslider/jquery.flexslider-min.js"></script>
+	<script src="__WEBSITE__/plugins/flexslider/flexslider.config.js"></script>
+	<script src="__WEBSITE__/js/jquery.appear.js"></script>
+	<script src="__WEBSITE__/js/stellar.js"></script>
+	<script src="__WEBSITE__/js/classie.js"></script>
+	<script src="__WEBSITE__/js/uisearch.js"></script>
+	<script src="__WEBSITE__/js/jquery.cubeportfolio.min.js"></script>
+	<script src="__WEBSITE__/js/google-code-prettify/prettify.js"></script>
+	<script src="__WEBSITE__/js/animate.js"></script>
+	<script src="__WEBSITE__/js/custom.js"></script>
+	<script src="__WEBSITE__/js/myjs.js"></script>
+
+
+</body>
+
+</html>

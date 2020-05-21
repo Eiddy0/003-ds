@@ -1,0 +1,35 @@
+					<div class="col-lg-3">
+						<aside class="left-sidebar">
+							
+							<div class="widget">
+								<h5 class="widgetheading">目录</h5>
+								<ul class="cat">
+									<li><i class="fa fa-angle-right"></i><a href="__MYWEB__/index.html">首页</a></li>
+									{volist name="cateres" id="cate"}
+									{if condition="$cate['children'] eq 0"}
+									<li><i class="fa fa-angle-right"></i><a href="__MYWEB__/{if condition="$cate['type'] eq 1"}artlist{elseif condition="$cate['type'] eq 2"/}page{elseif condition="$cate['type'] eq 4"}data{/if}/index/cateid/{$cate['id']}">{$cate.catename}</a></li>
+									{/if}
+									{/volist}
+								</ul>
+							</div>
+							<div class="widget">
+								<h5 class="widgetheading">联系方式</h5>
+								<ul class="recent">
+									<li>
+										<h6><a href="#">电话</a></h6>
+										<p>
+											0571-63740889
+										</p>
+									</li>
+									<li>
+										<h6><a href="#">邮箱</a></h6>
+										<p>
+											sjh@zafu.edu.cn<br/>
+          xiaolichi@zafu.edu.cn
+										</p>
+									</li>
+								</ul>
+							</div>
+							
+						</aside>
+					</div>

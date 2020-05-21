@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/top" /}
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="public/left" /}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="{:url('index/index')}">报名管理</a>
+                    </li>
+                    <li class="active">成员列表</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll">
+                                    <table class="table table-bordered table-hover">
+                                        <thead class="">
+                                        <tr><h2 class="text-center">{$team['name']}团队成员</h2></tr>
+                                        <tr>
+                                            <th class="text-center" width="10%">ID</th>
+                                            <th class="text-center">姓名</th>
+                                            <th class="text-center">性别</th>
+                                            <th class="text-center">学校</th>
+                                            <th class="text-center">专业班级</th>
+                                             <th class="text-center">团队角色</th>
+                                              <th class="text-center">联系方式</th>
+                                              <th class="text-center">备注</th>
+                                            <th class="text-center" width="20%">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {volist name="team['member']" id="m"}
+                                        <tr>
+                                            <td align="center">{$m.member_id}</td>
+                                            <td align="center">{$m.name}</td>
+                                            <td align="center">{$m.sex}</td>
+                                            <td align="center">{$m.school}</td>
+                                            <td align="center">{$m.major}</td>
+                                            <td align="center">{if $m.role==1}老师{elseif $m.role==2}队长{else/}成员{/if}</td>
+                                            <td align="center">{$m.phone}</td>
+                                            <td align="center">{$m.remark}</td>
+                                            <td align="center">
+                                                <a href="{:url('medit',array('member_id'=>$m['member_id']))}"
+                                                   class="btn btn-primary btn-sm shiny">
+                                                    <i class="fa fa-edit"></i> 编辑
+                                                </a>
+                                                {if $m.role!=1 and $m.role!=2}
+                                                <a href="#"
+                                                   onClick="warning('确实要删除吗', '{:url('mdel',array('member_id'=>$m['member_id']))}')"
+                                                   class="btn btn-danger btn-sm shiny">
+                                                    <i class="fa fa-trash-o"></i> 删除
+                                                </a>
+                                                {else/}
+                                                <a href="#" class="btn btn-danger btn-sm shiny disabled">
+                                                    <i class="fa fa-trash-o"></i> 删除
+                                                </a>
+                                                {/if}
+                                            </td>
+                                        </tr>
+                                        {/volist}
+                                        </tbody>
+                                    </table>
+                                     <div class="form-group" style="margin-bottom: 60px;">
+                                            <div class="col-sm-10" style="text-align: right;margin-top: 20px;">
+                                                 <a href="{:url('teamlist')}"  class="btn btn-default" style="margin:0;">返回</a>
+                                            </div>
+                                     </div>
+                                </div>
+                                
+                          
+                                
+                            </div>    
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__ADMIN__/style/beyond.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>网站管理系统</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+
+</head>
+<body>
+<!-- 头部 -->
+{include file="public/top" /}
+<!-- /头部 -->
+
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
+        {include file="public/left" /}
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li class="active"><i class="fa fa-home"></i> / 首页</li>
+                </ul>
+            </div>
+            <!-- /Page Breadcrumb -->
+
+
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-body">
+                                <div class="flip-scroll">
+
+                                    <div class="portlet-title">
+                                         <div class="caption font-green bold" style="font-size: 15px; color: #2dc3e8;">
+                                             <b><i class="fa fa-bell-o"></i>&nbsp;&nbsp;&nbsp;通知公告</b>
+                                         </div>
+                                         <div class="tpl-portlet-input tpl-fz-ml">
+                                              <div class="portlet-input input-small input-inline">
+                                              </div>
+                                         </div>
+                                    </div>
+                                    <div class="jz-tz">
+                                         <ul  style="list-style-type: none;padding: 0px;margin: 25px;    color: #82949a;">
+                                         {volist name="news" id="n"}
+                                              <li style="padding-left: 14px;margin-bottom: 10px;">
+                                                <div>
+                                                     <div class="" style="float: right;">
+                                                           {$n.time}             
+                                                     </div>
+                                                     <div class="" style="">
+                                                          <span class="">
+                                                              <i class="fa fa-bell-o"></i>
+                                                          </span>
+                                                          <span> &nbsp;&nbsp;{$n.title}<p style="margin-top:10px;margin-left: 25px; ">{$n.article}</p></span>
+                                                     </div>
+                                                  </div>
+                                               </li>
+                                               {/volist}
+                                               <!-- <li style="padding-left: 14px;margin-bottom: 10px;">
+                                                    <div>
+                                                     <div class="" style="float: right;">
+                                                           5天前发布             
+                                                     </div>
+                                                     <div class="" style="">
+                                                          <span class="">
+                                                              <i class="fa fa-bell-o"></i>
+                                                          </span>
+                                                          <span> &nbsp;&nbsp;admin：<p style="margin-top:10px;margin-left: 25px;" >asdasda s</p></span>
+                                                     </div>
+                                                  </div>
+
+                                               </li>
+                                               <li style="padding-left: 14px;margin-bottom: 10px;">
+                                                     <div>
+                                                     <div class="" style="float: right;">
+                                                           5天前发布             
+                                                     </div>
+                                                     <div class="" style="">
+                                                          <span class="">
+                                                              <i class="fa fa-bell-o"></i>
+                                                          </span>
+                                                          <span> &nbsp;&nbsp;admin：<p style="margin-top:10px;margin-left: 25px;" >asdasda s</p></span>
+                                                     </div>
+                                                  </div>
+
+                                                </li> -->
+                                         </ul>
+                                    </div>
+                                </div>
+
+
+                               
+                            </div>
+                             <!-- <div class="jz-sh" style="    color: #82949a;">
+                                          <div class="jz-row1" style="width:49%;float: left;margin-top: 20px;padding: 12px; background-color: #fbfbfb; box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);">
+                                                <span style="color:#e7505a;font-size: 15px;"><b><i class="fa fa-bullhorn"></i> &nbsp;&nbsp;&nbsp;团队审核</b></span><br>
+                                                <div>
+                                                {if $tnum==0}
+                                                    <div style="float: left;"><p style="margin: 20px;">{if $mes['reply']=="0"||$acc['group_id']==1} 您的审核都已完成{else/}{$mes['reply']}{/if}</p>
+                                                    </div>
+                                                  {if $acc['group_id']==1}
+                                                    <div style="float: right;margin-top: 16px;"><a href="{:url('approval/taudit')}" class="btn btn-success btn-sm shiny" ><i class="fa fa-check"></i>前去查看</a>
+                                                  {else/}
+                                                    <div style="float: right;margin-top: 16px;"><a href="{:url('approval/send')}" class="btn btn-primary btn-sm shiny" ><i class="fa fa-star"></i> 发送消息给组委会 </a>
+                                                  {/if}
+                                                    </div>
+                                                    {else/}
+                                                     <div style="float: left;"><p style="margin: 20px;">还有{$tnum}个团队信息未审核</p>
+                                                    </div>
+                                                    <div style="float: right;margin-top: 16px;"><a href="{:url('approval/taudit')}" class="btn btn-primary btn-sm shiny" ><i class="fa fa-edit"></i>前去审核</a>
+                                                    </div>
+                                                    {/if}
+                                                </div>
+                                          </div>
+                                          {if $acc['group_id']==1} -->
+                                          <!-- <div class="jz-row2" style="width:49%; float: right;margin-top: 20px;padding: 12px; background-color: #fbfbfb;box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);">
+                                                <span style="color:#e7505a;font-size: 15px;"><b><i class="fa fa-bullhorn"></i> &nbsp;&nbsp;&nbsp;材料审核</b></span><br>
+                                                <div>
+                                                {if $mnum==0}
+                                                     <div style="float: left;"><p style="margin: 20px;">
+                                                     您的审核都已完成</p>
+                                                     </div>
+                                                     <div style="float: right;margin-top: 16px;"><a href="{:url('approval/maudit')}" class="btn btn-success btn-sm shiny" ><i class="fa fa-check"></i>前去查看</a>
+                                                     </div>
+                                                     {else/}
+                                                       <div style="float: left;"><p style="margin: 20px;">
+                                                     
+                                                     还有{$mnum}个团队材料未审核</p>
+                                                     </div>
+                                                     <div style="float: right;margin-top: 16px;"><a href="{:url('approval/maudit')}" class="btn btn-primary btn-sm shiny"><i class="fa fa-edit"></i>前去审核</a>
+                                                     </div>
+                                                     {/if}
+                                                </div>
+                                          </div>
+                                          {/if} -->
+                             <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- /Page Body -->
+        </div>
+        <!-- /Page Content -->
+    </div>
+</div>
+
+<!--Basic Scripts-->
+<script src="__ADMIN__/style/jquery_002.js"></script>
+<script src="__ADMIN__/style/bootstrap.js"></script>
+<script src="__ADMIN__/style/jquery.js"></script>
+<!--Beyond Scripts-->
+<script src="__ADMIN__/style/beyond.js"></script>
+
+
+</body>
+</html>

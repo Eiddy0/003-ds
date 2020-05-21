@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html><head>
+        <meta charset="utf-8">
+    <title>ThinkPHP5.0</title>
+
+    <meta name="description" content="Dashboard">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--Basic Styles-->
+    <link href="__ADMIN__/style/bootstrap.css" rel="stylesheet">
+    <link href="__ADMIN__/style/font-awesome.css" rel="stylesheet">
+    <link href="__ADMIN__/style/weather-icons.css" rel="stylesheet">
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__ADMIN__/style/beyond.css" rel="stylesheet" type="text/css">
+    <link href="__ADMIN__/style/demo.css" rel="stylesheet">
+    <link href="__ADMIN__/style/typicons.css" rel="stylesheet">
+    <link href="__ADMIN__/style/animate.css" rel="stylesheet">
+    
+</head>
+<body>
+    <!-- 头部 -->
+    {include file="public/top" /} 
+    <!-- /头部 -->
+    
+    <div class="main-container container-fluid">
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            {include file="public/left" /} 
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                                        <li>
+                        <a href="#">系统</a>
+                    </li>
+                                        <li>
+                        <a href="{:url('lst')}">信息审核</a>
+                    </li>
+                                        <li class="active">查看成员信息</li>
+                                        </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-bottom bordered-blue">
+                <span class="widget-caption">{$mem.team.name}团队</span>
+            </div>
+            <div class="widget-body">
+                <div id="horizontal-form">
+                    <div class="form-horizontal">
+                      <h3>{if $mem.role==1}老师{elseif $mem.role==2}队长{else/}成员{/if} {$mem.name}</h3>
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label no-padding-right">性别</label>
+                      <div class="col-sm-6">
+                        <h5>{$mem.sex}</h5>
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label no-padding-right">年龄</label>
+                      <div class="col-sm-6">
+                                               <h5>{$mem.age}</h5>
+                      </div>
+                    </div>
+                        <div class="form-group">
+                      <label class="col-sm-2 control-label no-padding-right">学校</label>
+                      <div class="col-sm-6">
+                                               <h5>{$mem.school}</h5>
+                      </div>
+                    </div>
+                      <div class="form-group">
+                      <label class="col-sm-2 control-label no-padding-right">专业班级</label>
+                      <div class="col-sm-6">
+                                               <h5>{$mem.major}</h5>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label no-padding-right">联系方式</label>
+                      <div class="col-sm-6">
+                                             <h5> {$mem.phone}</h5>
+                      </div>
+                    </div>
+                     <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <a href="{:url('taudit')}"  class="btn btn-default">返回</a>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>  
+    </div>
+
+        <!--Basic Scripts-->
+    <script src="__ADMIN__/style/jquery_002.js"></script>
+    <script src="__ADMIN__/style/bootstrap.js"></script>
+    <script src="__ADMIN__/style/jquery.js"></script>
+    <!--Beyond Scripts-->
+    <script src="__ADMIN__/style/beyond.js"></script>
+    
+
+
+</body></html>

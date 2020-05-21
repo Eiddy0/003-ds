@@ -1,0 +1,59 @@
+		<header>
+<!-- 			<div class="top">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="topleft-info">
+								<li><i class="fa fa-phone"></i> 0571-63741234</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<div id="sb-search" class="sb-search">
+								<form action="{:url('search/index')}" method="get">
+									<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="keywords" id="search">
+									<input class="sb-search-submit" type="submit" value="">
+									<span class="sb-icon-search" title="Click to start searching"></span>
+								</form>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+						<a class="navbar-brand" href="__MYWEB__/index.html">
+							浙江省大学生环境生态科技创新大赛
+						</a>
+					</div>
+					<div class="navbar-collapse collapse ">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="__MYWEB__/index.html">首页</a></li>
+							{volist name="cateres" id="cate"}
+							{if condition="$cate['children'] neq 0"}
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">{$cate['catename']} <i class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+									<?php foreach($cate['children'] as $k2 => $v2):?>
+									<li><a href="__MYWEB__/{if condition="$v2['type'] eq 3"}aboutus{elseif condition="$v2['type'] eq 4" /}data{/if}/index/cateid/{$v2.id}"><?php echo $v2['catename'];?></a></li>
+									<?php endforeach;?>
+								</ul>
+							</li>
+							{else}
+							<li class="dropdown"><a href="__MYWEB__/{if condition="$cate['type'] eq 1"}artlist{elseif condition="$cate['type'] eq 2"/}page{elseif condition="$cate['type'] eq 4"/}data{/if}/index/cateid/{$cate['id']}">{$cate.catename}</a></li>
+							{/if}
+							{/volist}
+							<li><a href="http://cxds.utbeta.com/public/index.php/index/login/index.html"  target="_blank">登录系统</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
